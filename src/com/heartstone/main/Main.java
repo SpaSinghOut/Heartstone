@@ -10,7 +10,7 @@ public class Main {
 	}
 	void go(){
 		while(true){
-			
+			fgddddddddddddddddddddddddddd
 		}
 	}
 }
