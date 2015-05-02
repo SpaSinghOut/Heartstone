@@ -6,19 +6,16 @@ public class Main {
 		new Main().go();
 	}
 	Main(){
-		Card spartak = new Card(2,5);
-		Card nick = new Card(1,4);
-		System.out.printf("Spartak has %d damage and %d health\n", spartak.damage, spartak.health);
-		System.out.printf("Nick has %d damage and %d health\n", nick.damage, nick.health);
-		spartak.attack(nick);
-		System.out.println("Spartak attacked nick");
-		System.out.printf("Spartak has %d damage and %d health\n", spartak.damage, spartak.health);
-		System.out.printf("Nick has %d damage and %d health\n", nick.damage, nick.health);
-		Card Dreadnought = new Card(6,5);
-		System.out.printf("Dreadnought has %d damage and %d health\n", Dreadnought.damage, Dreadnought.health);
-		Dreadnought.attack(spartak);
-		System.out.printf("Dreadnought attacked spartak\n");
-		System.out.printf("spartak has %d damage and %d health\n", spartak.damage, spartak.health);
+		Card fierceGnome = new Card(1,2,1);
+		Card nightwolf = new Card(3,3,3);
+		Card burningCrusader = new Card(2,1,3);
+		Card dreadnought = new Card(5,6,5);
+		Card savage = new Card(3,5,1);
+		Card bandit = new Card(2,2,2);
+		Card tiger = new Card(3,4,2);
+		Card wisp = new Card(1,1,1);
+		Card blackAngel = new Card(8,9,7);
+		
 	}
 	void go(){
 		while(true){
