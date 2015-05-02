@@ -2,7 +2,7 @@ package com.heartstone.main;
 
 public class Card {
 	int health, damage;
-	public Card(int health, int damage){
+	public Card(int damage, int health){
 		this.health = health;
 		this.damage = damage;
 	}
