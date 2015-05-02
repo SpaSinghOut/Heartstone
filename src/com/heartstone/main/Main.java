@@ -16,6 +16,7 @@ public class Main {
 		Card wisp = new Card(1,1,1);
 		Card blackAngel = new Card(8,9,7);
 		Card ghoul = new Card(2,2,4);
+		Hero aletheia = new Hero(30);
 		
 	}
 	void go(){
