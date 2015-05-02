@@ -15,6 +15,7 @@ public class Main {
 		Card tiger = new Card(3,4,2);
 		Card wisp = new Card(1,1,1);
 		Card blackAngel = new Card(8,9,7);
+		Card ghoul = new Card(2,2,4);
 		
 	}
 	void go(){
