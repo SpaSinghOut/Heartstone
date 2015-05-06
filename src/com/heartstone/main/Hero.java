@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.spartanlaboratories.engine.game.VisibleObject;
+import com.spartanlaboratories.engine.structure.Camera;
 import com.spartanlaboratories.engine.structure.Engine;
+import com.spartanlaboratories.engine.structure.Util;
+import com.spartanlaboratories.engine.structure.Util.NullColorException;
 
 public class Hero extends VisibleObject{
 	int health, mana, maxMana;
@@ -12,7 +15,7 @@ public class Hero extends VisibleObject{
 	Scanner inputListener = new Scanner(System.in);
 	public final static int maxMaxMana = 10;
 	public static ArrayList<Hero> heroes = new ArrayList<Hero>();
-	ArrayList<Minion> deck = new ArrayList<Minion>(), hand = new ArrayList<Minion>(), field = new ArrayList<Minion>();
+	ArrayList<Card> deck = new ArrayList<Card>(), hand = new ArrayList<Card>(), field = new ArrayList<Card>();
 	public Hero(String name, Engine engine){
 		super(engine);
 		this.name = name;
@@ -26,8 +29,8 @@ public class Hero extends VisibleObject{
 		for(int i = 0; i < 30; i++)deck.add(Minion.values()[(int)(Math.random()*Minion.values().length)]);
 	}
 	public void turn() {
-		changeMana();
-		drawCard();
+		resetMana();
+		playCard(drawCard());
 		while(listenForInput());
 	}
 	private boolean listenForInput() {
@@ -38,21 +41,30 @@ public class Hero extends VisibleObject{
 		}
 		return true;
 	}
-	private void drawCard(){
-		Minion card = deck.get((int)(Math.random()*deck.size()));
+	private Card drawCard(){
+		Card card = deck.get((int)(Math.random()*deck.size()));
 		hand.add(card);
 		System.out.println("The player " + name +" drew the card " + card.name());
+		return card;
 	}
-	private void changeMana(){
+	private void resetMana(){
 		mana=++maxMana;
 		System.out.println("The player " + name + " has " + mana + " mana");
 	}
-	    public void subtractMana(int netChange) {
-	   	 mana -= netChange;
-	    }
-	   /*void playCard(Card card){
-	   	subtractMana(card.mana); //Do we need?
-	   }*/
+	void playCard(Card card){
+		mana -= card.getManaCost();
+		card.playCard();
+		hand.remove(card);
+		if(card.getClass().equals(Minion.class))field.add(card);
+		for(int i = 0; i < field.size(); i++)
+			((Minion)field.get(i)).face.setLocation(350 + 150 * i, 500);
+	}
+	@Override
+	public boolean drawMe(Camera camera) throws Util.NullColorException{
+		for(Card c: field)
+			((Minion)c).face.drawMe(camera);
+		return super.drawMe(camera);
+	}
 }
 
 

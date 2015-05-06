@@ -1,1 +1,3 @@
 Provide an option to disable edge panning
+Fix edge panning going in only one direction per axis
+Create a VisibleObject constructor that does not require an engine as its parameter as well as a function that lets the user set the engine that is referenced by the vo.

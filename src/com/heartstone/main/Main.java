@@ -29,7 +29,7 @@ public class Main extends Map{
 		for(Hero h:Hero.heroes)
 			h.turn();
 	}
-	@Override //??????
+	@Override //This is the "Override" annotation. It designates an overriding method.
 	public void drawMap(Camera camera){
 		super.drawMap(camera);
 		for(Hero h:Hero.heroes)
@@ -40,8 +40,6 @@ public class Main extends Map{
 			}
 	}
 	
-	protected void drawBorder(){} 				// Ignore this
-	protected void initializeSpawnPoints(){} 	// This also
-												// Those just have to be there
-												// Deal with it
+	protected void drawBorder(){} 
+	protected void initializeSpawnPoints(){} 
 }
