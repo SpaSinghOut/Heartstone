@@ -3,22 +3,4 @@ Setting this object's color to white
 A Null Color Exception has occured. A Visible Object of type: com.heartstone.main.Hero contains a null color value
 Setting this object's color to white
 Inserting 0 visible objects
-At Second number 1, 0.00602367 seconds were used for the tick function
-Inserting 0 visible objects
-At Second number 2, 0.009207282000000002 seconds were used for the tick function
-Inserting 0 visible objects
-At Second number 3, 0.012129775000000006 seconds were used for the tick function
-Inserting 0 visible objects
-At Second number 4, 0.015458540000000003 seconds were used for the tick function
-Inserting 0 visible objects
-Entity Tick took 0.000030633 seconds
-which is 0.18% of the time appropriated for a single tick
-Entity Render took 0.008321087 seconds
-which is 49.93% of the time appropriated for a single tick
-At Second number 5, 0.018293227999999998 seconds were used for the tick function
-Inserting 0 visible objects
-At Second number 6, 0.023013609 seconds were used for the tick function
-Inserting 0 visible objects
-At Second number 7, 0.025343720999999993 seconds were used for the tick function
-Inserting 0 visible objects
-At Second number 8, 0.12137741399999999 seconds were used for the tick function
+At Second number 1, 0.0073474920000000015 seconds were used for the tick function

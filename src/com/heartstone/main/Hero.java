@@ -12,7 +12,7 @@ public class Hero extends VisibleObject{
 	Scanner inputListener = new Scanner(System.in);
 	public final static int maxMaxMana = 10;
 	public static ArrayList<Hero> heroes = new ArrayList<Hero>();
-	ArrayList<Card> deck = new ArrayList<Card>(), hand = new ArrayList<Card>(), field = new ArrayList<Card>();
+	ArrayList<Minion> deck = new ArrayList<Minion>(), hand = new ArrayList<Minion>(), field = new ArrayList<Minion>();
 	public Hero(String name, Engine engine){
 		super(engine);
 		this.name = name;
@@ -23,7 +23,7 @@ public class Hero extends VisibleObject{
 		setHeight(200);
 	}
 	private void createDeck() {
-		for(int i = 0; i < 30; i++)deck.add(Card.values()[(int)(Math.random()*Card.values().length)]);
+		for(int i = 0; i < 30; i++)deck.add(Minion.values()[(int)(Math.random()*Minion.values().length)]);
 	}
 	public void turn() {
 		changeMana();
@@ -39,7 +39,7 @@ public class Hero extends VisibleObject{
 		return true;
 	}
 	private void drawCard(){
-		Card card = deck.get((int)(Math.random()*deck.size()));
+		Minion card = deck.get((int)(Math.random()*deck.size()));
 		hand.add(card);
 		System.out.println("The player " + name +" drew the card " + card.name());
 	}
@@ -47,6 +47,12 @@ public class Hero extends VisibleObject{
 		mana=++maxMana;
 		System.out.println("The player " + name + " has " + mana + " mana");
 	}
+	    public void subtractMana(int netChange) {
+	   	 mana -= netChange;
+	    }
+	   /*void playCard(Card card){
+	   	subtractMana(card.mana); //Do we need?
+	   }*/
 }
 
 

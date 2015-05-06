@@ -1,6 +1,6 @@
 package com.heartstone.main;
 
-public enum Card {
+public enum Minion {
 	lavaGolem(1,2,1),
 	direWolf(3,3,3),
 	burningCrusader(2,1,3),
@@ -12,16 +12,16 @@ public enum Card {
 	darkAngel(8,9,7),
 	lostSoul(2,2,4),;
 	int mana, damage, health;
-	Card(int mana, int damage, int health){
+	Minion(int mana, int damage, int health){
 		this.mana = mana;
 		this.damage = damage;
 		this.health = health;
 	}
-	void attack(Card victim){
+	void attack(Minion victim){
 		damage(victim);
 		victim.damage(this);
 	}
-	private void damage(Card victim){
+	private void damage(Minion victim){
 		victim.health -= damage;
 	}
 }

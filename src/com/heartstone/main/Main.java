@@ -30,7 +30,7 @@ public class Main extends Map{
 		for(Hero h:Hero.heroes)
 			h.turn();
 	}
-	@Override
+	@Override //??????
 	public void drawMap(Camera camera){
 		super.drawMap(camera);
 		for(Hero h:Hero.heroes)
