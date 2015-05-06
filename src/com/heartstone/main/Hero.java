@@ -1,24 +1,30 @@
 package com.heartstone.main;
 
+import game.VisibleObject;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Hero {
+import structure.Engine;
+
+public class Hero extends VisibleObject{
 	int health, mana, maxMana;
 	String name;
 	Scanner inputListener = new Scanner(System.in);
 	public final static int maxMaxMana = 10;
 	public static ArrayList<Hero> heroes = new ArrayList<Hero>();
 	ArrayList<Card> deck = new ArrayList<Card>(), hand = new ArrayList<Card>(), field = new ArrayList<Card>();
-	public Hero(String name){
+	public Hero(String name, Engine engine){
+		super(engine);
 		this.name = name;
 		health = 30;
 		heroes.add(this);
 		createDeck();
+		setWidth(120);
+		setHeight(200);
 	}
 	private void createDeck() {
 		for(int i = 0; i < 30; i++)deck.add(Card.values()[(int)(Math.random()*Card.values().length)]);
-		
 	}
 	public void turn() {
 		changeMana();
