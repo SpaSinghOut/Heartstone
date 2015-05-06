@@ -1,6 +1,10 @@
 Create a VisibleObject constructor that does not require an engine as its parameter as well as a function that lets the user set the engine that is referenced by the vo.
+<<<<<<< HEAD
 Make output of tracker stats optional and have the tracker stats be configured from outside
 Make printing the stack trace on special exception optional
 make tickRate not final
 Make the portrait not be there by default
 Make runes not spawn by default
+=======
+Create an End Turn button
+>>>>>>> origin/master

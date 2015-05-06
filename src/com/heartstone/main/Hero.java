@@ -66,7 +66,6 @@ public class Hero extends VisibleObject{
 		for(int i = 0; i < field.size(); i++)						// Reconfigure Minion positions
 			((Minion)field.get(i)).face.setLocation(350 + 150 * i, getLocation().y + fieldVerticalOffset);
 	}
-	@Override
 	public boolean drawMe(Camera camera) throws Util.NullColorException{
 		for(Card c: field)
 			((Minion)c).face.drawMe(camera);

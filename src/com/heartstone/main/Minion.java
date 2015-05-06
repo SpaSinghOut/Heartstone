@@ -7,16 +7,16 @@ import com.spartanlaboratories.engine.structure.Util;
 import com.spartanlaboratories.engine.structure.Util.NullColorException;
 
 public enum Minion implements Card{
-	LAVAGOLEM(1,2,1),
-	DIREWOLF(3,3,3),
-	BURNINGCRUSADER(2,1,3),
-	JUGGERNAUT(6,2,9),
-	MYSTERIOUSMAN(3,5,1),
-	BANDIT(2,2,2),
-	SABRETOOTHTIGER(3,4,2),
 	WISP(1,1,1),
-	DARKANGEL(8,9,7),
-	LOSTSOUL(2,2,4),;
+	LAVAGOLEM(1,2,1),
+	BURNINGCRUSADER(2,1,3),
+	BANDIT(2,2,2),
+	LOSTSOUL(2,2,4),
+	DIREWOLF(3,3,3),
+	SABRETOOTHTIGER(3,4,2),
+	MYSTERIOUSMAN(3,5,1),
+	JUGGERNAUT(6,2,9),
+	DARKANGEL(8,9,7);
 	int mana;
 	int damage;
 	int health;
@@ -58,7 +58,6 @@ public enum Minion implements Card{
 			break;
 		default:
 			break;
-		
 		}
 	}
 	public void setFace(Engine engine, String fileType, String path){
