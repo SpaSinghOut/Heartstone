@@ -3,6 +3,7 @@ package com.heartstone.main;
 import com.spartanlaboratories.engine.game.VisibleObject;
 import com.spartanlaboratories.engine.structure.Camera;
 import com.spartanlaboratories.engine.structure.Engine;
+import com.spartanlaboratories.engine.structure.Util;
 import com.spartanlaboratories.engine.structure.Util.NullColorException;
 
 public enum Minion implements Card{
@@ -65,6 +66,7 @@ public enum Minion implements Card{
 		face.setTexture(fileType, path);
 		face.setWidth(120);
 		face.setHeight(200);
+		face.color = Util.Color.WHITE;
 	}
 	public void drawMe(Camera camera){
 		try {

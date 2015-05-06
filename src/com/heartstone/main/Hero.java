@@ -16,6 +16,8 @@ public class Hero extends VisibleObject{
 	public final static int maxMaxMana = 10;
 	public static ArrayList<Hero> heroes = new ArrayList<Hero>();
 	ArrayList<Card> deck = new ArrayList<Card>(), hand = new ArrayList<Card>(), field = new ArrayList<Card>();
+	int fieldVerticalOffset;
+	static Hero currentHero;
 	public Hero(String name, Engine engine){
 		super(engine);
 		this.name = name;
@@ -24,14 +26,16 @@ public class Hero extends VisibleObject{
 		createDeck();
 		setWidth(120);
 		setHeight(200);
+		color = Util.Color.WHITE;
 	}
 	private void createDeck() {
 		for(int i = 0; i < 30; i++)deck.add(Minion.values()[(int)(Math.random()*Minion.values().length)]);
 	}
 	public void turn() {
+		currentHero = this;
 		resetMana();
 		playCard(drawCard());
-		while(listenForInput());
+		while(currentHero.equals(this));
 	}
 	private boolean listenForInput() {
 		switch(inputListener.nextLine().toLowerCase()){
@@ -52,12 +56,15 @@ public class Hero extends VisibleObject{
 		System.out.println("The player " + name + " has " + mana + " mana");
 	}
 	void playCard(Card card){
-		mana -= card.getManaCost();
-		card.playCard();
-		hand.remove(card);
-		if(card.getClass().equals(Minion.class))field.add(card);
-		for(int i = 0; i < field.size(); i++)
-			((Minion)field.get(i)).face.setLocation(350 + 150 * i, 500);
+		mana -= card.getManaCost();									// Subtracts the manacost from the users mana
+		card.playCard();											// Tells the card that it has been played allowing it to prock special effects
+		hand.remove(card);											// Removes the card from the hand
+		if(card.getClass().equals(Minion.class)){					// If this is a minion type card
+			field.add(card);										// Then add it to the field and initialize its graphics
+			((Minion)card).setFace(engine, "JPG", "resources/" + ((Minion)card).toString().toLowerCase() + ".jpg");
+		}
+		for(int i = 0; i < field.size(); i++)						// Reconfigure Minion positions
+			((Minion)field.get(i)).face.setLocation(350 + 150 * i, getLocation().y + fieldVerticalOffset);
 	}
 	@Override
 	public boolean drawMe(Camera camera) throws Util.NullColorException{
