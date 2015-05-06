@@ -1,11 +1,10 @@
 package com.heartstone.main;
 
-import game.VisibleObject;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import structure.Engine;
+import com.spartanlaboratories.engine.game.VisibleObject;
+import com.spartanlaboratories.engine.structure.Engine;
 
 public class Hero extends VisibleObject{
 	int health, mana, maxMana;

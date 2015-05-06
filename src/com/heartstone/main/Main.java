@@ -1,7 +1,10 @@
 package com.heartstone.main;
 
-import structure.*;
-import structure.Util.NullColorException;
+import com.spartanlaboratories.engine.structure.Camera;
+import com.spartanlaboratories.engine.structure.Engine;
+import com.spartanlaboratories.engine.structure.Map;
+import com.spartanlaboratories.engine.structure.Util;
+import com.spartanlaboratories.engine.structure.Util.NullColorException;
 
 public class Main extends Map{
 	public static void main(String[] args){
@@ -34,7 +37,6 @@ public class Main extends Map{
 			try {
 				h.drawMe(camera);
 			} catch (NullColorException e) {
-				System.out.println("A null color exception has occured because an object of type " + h.getClass().getName() + " does not have their color initialized");
 				e.printStackTrace();
 				h.color = Util.Color.WHITE;
 			}
