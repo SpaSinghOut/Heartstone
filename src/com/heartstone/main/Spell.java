@@ -6,8 +6,12 @@ public enum Spell implements Card{
 	HASTE(3),	   //Give a minion Haste. HASTE:(Attack the same turn this card was played)
 	OBEDIENCE(8),  //Take control of an enemy minion.
 	OBLIVION(9),   //Take 8 damage. Deal 2 damage to your opponent every turn.
-	RESURRECT(4),  //Place a random dead minion in your hand.
-	PURGATORY(10); //Your opponent is unable to attack for 2 turns.
+	RESURRECT(5),  //Resurrect a minion that died this turn and place it into the battlefield.
+	ENLIGHTEN(2);  //View 1 card from your opponent's hand.
+	
+	
+	
+	
     int mana;
     Minion target;
     Spell(int mana){
