@@ -3,7 +3,6 @@ package com.heartstone.main;
 import com.spartanlaboratories.engine.structure.Camera;
 import com.spartanlaboratories.engine.structure.Engine;
 import com.spartanlaboratories.engine.structure.Map;
-import com.spartanlaboratories.engine.structure.Util;
 import com.spartanlaboratories.engine.structure.Util.NullColorException;
 
 public class Main extends Map{
