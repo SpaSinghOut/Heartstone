@@ -38,7 +38,6 @@ public class Main extends Map{
 				h.drawMe(camera);
 			} catch (NullColorException e) {
 				e.printStackTrace();
-				h.color = Util.Color.WHITE;
 			}
 	}
 	
