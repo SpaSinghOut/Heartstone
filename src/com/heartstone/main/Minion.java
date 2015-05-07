@@ -7,6 +7,7 @@ import com.spartanlaboratories.engine.structure.Util;
 import com.spartanlaboratories.engine.structure.Util.NullColorException;
 
 public enum Minion implements Card{
+	ROYAL_SEER(2,0,4), //Can see into opponent's hand.
 	WISP(1,1,1), //Battlecry: Silence a minion.
 	LAVAGOLEM(1,2,1), 
 	ROYAL_GUARD(4,1,5), //Taunt. Battlecry: Draw a card.
@@ -15,9 +16,12 @@ public enum Minion implements Card{
 	LOSTSOUL(3,2,4), //Barrier
 	SABRETOOTHTIGER(3,4,2),
 	MYSTERIOUSMAN(3,5,1),
+	ROYAL_KNIGHT(5,3,3), //Deathrattle: Summon three 1/1 Royal Footmen.
 	BANDIT(4,1,2), //50% chance to steal a card from your opponent's hand while attacking their hero.
-	ROYAL_PRIEST(8,2,8), //BARRIER. Battlecry: Give a friendly minion +2/+2. Heal all other minions for +1 at the end of each turn.
+	ROYAL_GRUNT(7,7,3), //Haste. Bleed.
+	DIVINE_PRIEST(8,2,8), //BARRIER. Battlecry: Give a friendly minion +2/+2. Heal all other minions for +1 at the end of each turn.
 	DARKANGEL(8,9,7);
+	//Going to add Royal Bowman
 	int mana;
 	int damage;
 	int health;
@@ -57,7 +61,13 @@ public enum Minion implements Card{
 			break;
 		case ROYAL_GUARD:
 			break;
-		case ROYAL_PRIEST:
+		case DIVINE_PRIEST:
+			break;
+		case ROYAL_GRUNT:
+			break;
+		case ROYAL_KNIGHT:
+			break;
+		case ROYAL_SEER:
 			break;
 		default:
 			break;
