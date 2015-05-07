@@ -7,15 +7,16 @@ import com.spartanlaboratories.engine.structure.Util;
 import com.spartanlaboratories.engine.structure.Util.NullColorException;
 
 public enum Minion implements Card{
-	WISP(1,1,1),
-	LAVAGOLEM(1,2,1),
-	BURNINGCRUSADER(2,1,3),
-	BANDIT(2,2,2),
-	LOSTSOUL(2,2,4),
-	DIREWOLF(3,3,3),
+	WISP(1,1,1), //Battlecry: Silence a minion.
+	LAVAGOLEM(1,2,1), 
+	ROYAL_GUARD(4,1,5), //Taunt. Battlecry: Draw a card.
+	BURNINGCRUSADER(2,1,3), //Battlecry: Deal 1 damage.
+	DIREWOLF(3,2,2), //Battlecry: Give your other minions +1 Attack.
+	LOSTSOUL(3,2,4), //Barrier
 	SABRETOOTHTIGER(3,4,2),
 	MYSTERIOUSMAN(3,5,1),
-	JUGGERNAUT(6,2,9),
+	BANDIT(4,1,2), //50% chance to steal a card from your opponent's hand while attacking their hero.
+	ROYAL_PRIEST(8,2,8), //BARRIER. Battlecry: Give a friendly minion +2/+2. Heal all other minions for +1 at the end of each turn.
 	DARKANGEL(8,9,7);
 	int mana;
 	int damage;
@@ -44,8 +45,6 @@ public enum Minion implements Card{
 			break;
 		case DIREWOLF:
 			break;
-		case JUGGERNAUT:
-			break;
 		case LAVAGOLEM:
 			break;
 		case LOSTSOUL:
@@ -55,6 +54,10 @@ public enum Minion implements Card{
 		case SABRETOOTHTIGER:
 			break;
 		case WISP:
+			break;
+		case ROYAL_GUARD:
+			break;
+		case ROYAL_PRIEST:
 			break;
 		default:
 			break;
