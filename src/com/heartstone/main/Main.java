@@ -41,7 +41,9 @@ public class Main extends Map{
 				e.printStackTrace();
 			}
 	}
-	
-	protected void drawBorder(){} 
-	protected void initializeSpawnPoints(){} 
+	@Override
+	protected void update() {
+		
+		
+	} 
 }
