@@ -13,7 +13,8 @@ public class Main extends Map{
 		Main map = new Main(engine);
 		engine.typeHandler.newEntry("map", map);
 		engine.init();
-		((Human)engine.controllers.get(0)).gui.console.executer = new com.heartstone.main.Executer(map, ((Human)engine.controllers.get(0)).gui.console);
+		Console console = ((Human)engine.controllers.get(0)).gui.console;
+		console.executer = new com.heartstone.main.Executer(map, console);
 		engine.start();
 	}
 	private Main(Engine engine){
