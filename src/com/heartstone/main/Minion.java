@@ -88,12 +88,17 @@ public enum Minion implements Card{
 	public void drawMe(Camera camera){
 		try {
 			face.drawMe(camera);
-		} catch (NullColorException e) {
+		} 
+		catch (NullColorException e) {
 			e.printStackTrace();
 		}
 	}
 	@Override
 	public int getManaCost() {
 		return mana;
+	}
+	public int getHealth() {
+		return health;
+		//Fuck it     if(Card.gethealth(Minion.class).equals(Minion.Health))
 	}
 }

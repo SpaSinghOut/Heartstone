@@ -1,5 +1,7 @@
 package com.heartstone.main;
 
+import java.util.ArrayList;
+
 import com.spartanlaboratories.engine.structure.Camera;
 import com.spartanlaboratories.engine.structure.Human;
 import com.spartanlaboratories.engine.structure.Console;
@@ -42,9 +44,10 @@ public class Main extends Map{
 				e.printStackTrace();
 			}
 	}
+		static ArrayList<Card> graveyard = new ArrayList<Card>();
+		
 	@Override
 	protected void update() {
-		
 		
 	} 
 }

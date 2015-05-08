@@ -43,29 +43,33 @@ public enum Spell implements Card{
 	@Override
 	public void playCard() {
 		switch(this){
-		case HUSTLE:
-			break;
-		case JUGGERNAUT:
-			break;
-		case OBEDIENCE:
-			break;
-		case OBLITERATE:
-			break;
-		case SAP:
-			break;
-		case RESURRECT:
-			break;
-		case CLEANSE:
-			break;
-		case OBLIVION:
+		case PERIL:
 			break;
 		case ENLIGHTEN:
 			break;
+		case CLEANSE:
+			break;
+		case SILENCE:
+			break;
+		case HUSTLE:
+			break;
+		case SAP:
+			break;
+		case JUGGERNAUT:
+			break;
+		case RESURRECT:
+			break;
 		case THIEVES_GAMBIT:
 			break;
-		case PERIL:
-			break;
 		case SHUFFLE:
+			break;
+		case OBLITERATE:
+			break;
+		case OBEDIENCE:
+			break;
+		case OBLIVION:
+			break;
+		case DYING_BREATH:
 			break;
 		default:
 			break;
