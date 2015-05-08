@@ -13,14 +13,12 @@ public class Main extends Map{
 		Main map = new Main(engine);
 		engine.typeHandler.newEntry("map", map);
 		engine.init();
-		Console console = ((Human)engine.controllers.get(0)).gui.console;
-		console.executer = new com.heartstone.main.Executer(map, console);
 		engine.start();
 	}
-	private Main(Engine engine){
-		super(engine);
+	public void showMessage(String message){
+		console.out(message);
 	}
-	
+	Console console;
 	public void init(){
 		Hero aletheia = new Hero("aletheia", engine);
 		Hero vladimir = new Hero("vladimir", engine);
@@ -30,21 +28,37 @@ public class Main extends Map{
 		vladimir.fieldVerticalOffset = -200;
 		aletheia.setTexture("JPG", "resources/mage.jpg");
 		vladimir.setTexture("JPG", "resources/warlock.jpg");
+		consoleSetup();
+		Hero.nextHero = true;
 	}
-	@Override //This is the "Override" annotation. It designates an overriding method.
+	
+	@Override
 	public void drawMap(Camera camera){
 		super.drawMap(camera);
 		for(Hero h:Hero.heroes)
 			try {
-				System.out.println("test");
 				h.drawMe(camera);
 			} catch (NullColorException e) {
 				e.printStackTrace();
 			}
 	}
+	
 	@Override
 	protected void update() {
-		
-		
+		if(Hero.nextHero){
+			int heroIndex = Hero.heroes.indexOf(Hero.currentHero) + 1;
+			if(heroIndex >= Hero.heroes.size())heroIndex = 0;
+			Hero.heroes.get(heroIndex).turn();
+		}
 	} 
+	
+	private Main(Engine engine){
+		super(engine);
+	}
+	
+	private void consoleSetup(){
+		console = ((Human)engine.controllers.get(0)).gui.console;
+		console.executer = new com.heartstone.main.Executer(this, console);
+		console.addCommand("endturn", 0);
+	}
 }
