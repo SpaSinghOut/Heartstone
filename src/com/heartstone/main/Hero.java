@@ -3,11 +3,8 @@ package com.heartstone.main;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import com.spartanlaboratories.engine.game.VisibleObject;
-import com.spartanlaboratories.engine.structure.Camera;
-import com.spartanlaboratories.engine.structure.Engine;
-import com.spartanlaboratories.engine.structure.Util;
-import com.spartanlaboratories.engine.structure.Util.NullColorException;
+import com.spartanlaboratories.engine.structure.*;
+import com.spartanlaboratories.engine.game.*;
 
 public class Hero extends VisibleObject{
 	int health, mana, maxMana;
@@ -18,7 +15,7 @@ public class Hero extends VisibleObject{
 	ArrayList<Card> deck = new ArrayList<Card>(), hand = new ArrayList<Card>(), field = new ArrayList<Card>();
 	int fieldVerticalOffset;
 	static Hero currentHero;
-	public Hero(String name, Engine engine){
+	public Hero(String name, com.spartanlaboratories.engine.structure.Engine engine){
 		super(engine);
 		this.name = name;
 		health = 30;

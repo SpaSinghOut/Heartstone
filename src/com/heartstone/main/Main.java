@@ -10,8 +10,10 @@ import com.spartanlaboratories.engine.structure.Util.NullColorException;
 public class Main extends Map{
 	public static void main(String[] args){
 		Engine engine = new Engine();
-		engine.typeHandler.newEntry("map", new Main(engine));
+		Main map = new Main(engine);
+		engine.typeHandler.newEntry("map", map);
 		engine.init();
+		((Human)engine.controllers.get(0)).gui.console.executer = new com.heartstone.main.Executer(map, ((Human)engine.controllers.get(0)).gui.console);
 		engine.start();
 	}
 	private Main(Engine engine){
