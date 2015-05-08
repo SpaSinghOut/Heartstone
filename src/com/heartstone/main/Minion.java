@@ -6,35 +6,43 @@ import com.spartanlaboratories.engine.structure.Engine;
 import com.spartanlaboratories.engine.structure.Util;
 import com.spartanlaboratories.engine.structure.Util.NullColorException;
 
-public enum Minion implements Card{
-	WISP(1,1,1), //Battlecry: Silence a minion.
-	LAVA_GOLEM(1,2,1), 
-	BURNING_CRUSADER(2,1,3), //Battlecry: Deal 1 damage.
-	DIREWOLF(3,2,2), //Battlecry: Give your other minions +1 Attack.
-	LOST_SOUL(3,2,4), //Barrier
-	SABRETOOTHTIGER(3,4,2),
-	MYSTERIOUS_MAN(3,5,1),
-	BANDIT(4,1,2), //50% chance to steal a card from your opponent's hand while attacking their hero.
-	DROGON(8,9,7), //Legendary
-	//Royal Class
-	ROYAL_SEER(2,0,4), //Can see into opponent's hand.
-	ROYAL_GUARD(4,1,5), //Taunt. Battlecry: Draw a card.
-	ROYAL_KNIGHT(5,3,3), //Deathrattle: Summon three 1/1 Royal Footmen.
-	ROYAL_GRUNT(7,7,3), //Haste. Bleed.
-	//Divine Class
-	DIVINE_PRIEST(8,2,8); //BARRIER. Battlecry: Give a friendly minion +2/+2. Heal all other minions for +1 at the end of each turn.
-	//Elven class
-	//Demon/Demonic/Dark class
-	//Beast class
-	//Mech class
+public class Minion implements Card{
+	enum Preset{
+		WISP(1,1,1), //Battlecry: Silence a minion.
+		LAVA_GOLEM(1,2,1), 
+		BURNING_CRUSADER(2,1,3), //Battlecry: Deal 1 damage.
+		DIREWOLF(3,2,2), //Battlecry: Give your other minions +1 Attack.
+		LOST_SOUL(3,2,4), //Barrier
+		SABRETOOTHTIGER(3,4,2),
+		MYSTERIOUS_MAN(3,5,1),
+		BANDIT(4,1,2), //50% chance to steal a card from your opponent's hand while attacking their hero.
+		DROGON(8,9,7), //Legendary
+		//Royal Class
+		ROYAL_SEER(2,0,4), //Can see into opponent's hand.
+		ROYAL_GUARD(4,1,5), //Taunt. Battlecry: Draw a card.
+		ROYAL_KNIGHT(5,3,3), //Deathrattle: Summon three 1/1 Royal Footmen.
+		ROYAL_GRUNT(7,7,3), //Haste. Bleed.
+		//Divine Class
+		DIVINE_PRIEST(8,2,8); //BARRIER. Battlecry: Give a friendly minion +2/+2. Heal all other minions for +1 at the end of each turn.
+		//Elven class
+		//Demon/Demonic/Dark class
+		//Beast class
+		//Mech class
+		int mana;
+		int health, damage;
+		Preset(int mana, int health, int damage){
+			this.mana = mana;
+			this.health = health;
+			this.damage = damage;
+		}
+	}
 	int mana;
 	int damage;
 	int health;
+	Preset preset;
 	VisibleObject face;
-	Minion(int mana, int damage, int health){
-		this.mana = mana;
-		this.damage = damage;
-		this.health = health;
+	Minion(Preset preset){
+		this.preset = preset;
 	}
 	void attack(Minion victim){
 		damage(victim);
@@ -45,7 +53,7 @@ public enum Minion implements Card{
 	}
 	@Override
 	public void playCard() {
-		switch(this){
+		switch(preset){
 		case BANDIT:
 			break;
 		case BURNING_CRUSADER:
@@ -99,6 +107,10 @@ public enum Minion implements Card{
 	}
 	public int getHealth() {
 		return health;
-		//Fuck it     if(Card.gethealth(Minion.class).equals(Minion.Health))
+	}
+	@Override
+	public String name() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

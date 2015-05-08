@@ -1,7 +1,5 @@
 package com.heartstone.main;
 
-import java.util.ArrayList;
-
 import com.spartanlaboratories.engine.structure.Camera;
 import com.spartanlaboratories.engine.structure.Human;
 import com.spartanlaboratories.engine.structure.Console;
@@ -44,14 +42,6 @@ public class Main extends Map{
 				e.printStackTrace();
 			}
 	}
-/*<<<<<<< HEAD
-		static ArrayList<Card> graveyard = new ArrayList<Card>();
-		
-	@Override
-	protected void update() {
-		
-=======
-	
 	@Override
 	protected void update() {
 		if(Hero.nextHero){
@@ -59,8 +49,7 @@ public class Main extends Map{
 			if(heroIndex >= Hero.heroes.size())heroIndex = 0;
 			Hero.heroes.get(heroIndex).turn();
 		}
->>>>>>> origin/master
-	} */
+	}
 	
 	private Main(Engine engine){
 		super(engine);
