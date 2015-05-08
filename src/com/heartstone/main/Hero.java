@@ -28,19 +28,14 @@ public class Hero extends VisibleObject{
 	private void createDeck() {
 		for(int i = 0; i < 30; i++)deck.add(Minion.values()[(int)(Math.random()*Minion.values().length)]);
 	}
+	static boolean nextHero;
 	public void turn() {
+		((Main) engine.map).showMessage("The player: " + name + " has started their turn.");
 		currentHero = this;
+		nextHero = false;
 		resetMana();
 		playCard(drawCard());
-		while(currentHero.equals(this));
-	}
-	private boolean listenForInput() {
-		switch(inputListener.nextLine().toLowerCase()){
-		case "end turn":case "endturn":
-			System.out.println("The player " + name + " has ended their turn");
-			return false;
-		}
-		return true;
+		System.out.println("test");
 	}
 	private Card drawCard(){
 		Card card = deck.get((int)(Math.random()*deck.size()));

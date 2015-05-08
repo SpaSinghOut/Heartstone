@@ -14,7 +14,8 @@ public class Executer extends Console.Executer{
 	public void execute(String[] readReadyCommand){
 		switch(readReadyCommand[0]){
 		case "endturn": 
-			Hero.currentHero = null;
+			this.owner.out("The player: " + Hero.currentHero.name + " has ended their turn.");
+			Hero.nextHero = true;
 			break;
 		}
 	}
