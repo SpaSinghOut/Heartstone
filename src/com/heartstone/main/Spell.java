@@ -23,7 +23,7 @@ public enum Spell implements Card{
 	DEATHRATTLE:(Will do what we set the cards to do)
 	ENDEAVOR:(50% chance to deal 2x damage)
 	MANUEVER:(25% chance to dodge attacks)
-	TAUNT:
+	TAUNT:(Your opponent must attack this minion before attacking your hero)
 	REVENGE:(When this minion is killed, deal damage equal to the attacking minion's Health.)
 	BARRIER:(Gives a friendly minion a Barrier until it is broken)
 	HASTE:(Attack the same turn this card was played)
