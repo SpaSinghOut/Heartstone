@@ -53,7 +53,7 @@ public class Hero extends VisibleObject{
 		System.out.println("The player " + name + " has " + mana + " mana");
 	}
 	void playCard(Card card){
-		mana -= card.getManaCost();									// Subtracts the manacost from the users mana
+		mana -= card.getManaCost();									// Subtracts the mana cost from the user's mana
 		card.playCard();											// Tells the card that it has been played allowing it to prock special effects
 		hand.remove(card);											// Removes the card from the hand
 		if(card.getClass().equals(Minion.class)){					// If this is a minion type card

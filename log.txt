@@ -1,4 +1,5 @@
 Inserting 0 visible objects
+<<<<<<< HEAD
 Inserting 0 visible objects
 Inserting 0 visible objects
 Inserting 0 visible objects
@@ -1693,3 +1694,8 @@ Inserting 0 visible objects
 Inserting 0 visible objects
 Inserting 0 visible objects
 Inserting 0 visible object
+=======
+At Second number 1, 0.008951771999999995 seconds were used for the tick function
+Inserting 0 visible objects
+At Second number 2, 0.01628677099999999 seconds were used for the tick function
+>>>>>>> origin/master
