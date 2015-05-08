@@ -7,21 +7,27 @@ import com.spartanlaboratories.engine.structure.Util;
 import com.spartanlaboratories.engine.structure.Util.NullColorException;
 
 public enum Minion implements Card{
-	ROYAL_SEER(2,0,4), //Can see into opponent's hand.
 	WISP(1,1,1), //Battlecry: Silence a minion.
 	LAVAGOLEM(1,2,1), 
-	ROYAL_GUARD(4,1,5), //Taunt. Battlecry: Draw a card.
-	BURNINGCRUSADER(2,1,3), //Battlecry: Deal 1 damage.
+	BURNING_CRUSADER(2,1,3), //Battlecry: Deal 1 damage.
 	DIREWOLF(3,2,2), //Battlecry: Give your other minions +1 Attack.
-	LOSTSOUL(3,2,4), //Barrier
+	LOST_SOUL(3,2,4), //Barrier
 	SABRETOOTHTIGER(3,4,2),
 	MYSTERIOUSMAN(3,5,1),
-	ROYAL_KNIGHT(5,3,3), //Deathrattle: Summon three 1/1 Royal Footmen.
 	BANDIT(4,1,2), //50% chance to steal a card from your opponent's hand while attacking their hero.
+	DROGON(8,9,7), //Legendary
+	//Royal Class
+	ROYAL_SEER(2,0,4), //Can see into opponent's hand.
+	ROYAL_GUARD(4,1,5), //Taunt. Battlecry: Draw a card.
+	ROYAL_KNIGHT(5,3,3), //Deathrattle: Summon three 1/1 Royal Footmen.
 	ROYAL_GRUNT(7,7,3), //Haste. Bleed.
-	DIVINE_PRIEST(8,2,8), //BARRIER. Battlecry: Give a friendly minion +2/+2. Heal all other minions for +1 at the end of each turn.
-	DARKANGEL(8,9,7);
-	//Going to add Royal Bowman
+	//Divine Class
+	DIVINE_PRIEST(8,2,8); //BARRIER. Battlecry: Give a friendly minion +2/+2. Heal all other minions for +1 at the end of each turn.
+	//Elven class
+	//Demon/Demonic/Dark class
+	//Beast class
+	//Mech class
+	//
 	int mana;
 	int damage;
 	int health;
@@ -43,15 +49,15 @@ public enum Minion implements Card{
 		switch(this){
 		case BANDIT:
 			break;
-		case BURNINGCRUSADER:
+		case BURNING_CRUSADER:
 			break;
-		case DARKANGEL:
+		case DROGON:
 			break;
 		case DIREWOLF:
 			break;
 		case LAVAGOLEM:
 			break;
-		case LOSTSOUL:
+		case LOST_SOUL:
 			break;
 		case MYSTERIOUSMAN:
 			break;
