@@ -8,17 +8,13 @@ import com.spartanlaboratories.engine.structure.Map;
 import com.spartanlaboratories.engine.structure.Util.NullColorException;
 
 public class Main extends Map{
-	public static void main(String[] args){
-		Engine engine = new Engine();
-		Main map = new Main(engine);
-		engine.typeHandler.newEntry("map", map);
-		engine.init();
-		engine.start();
-	}
+	
+	Console console; // The console through which the game action are curently being controlled.
+	
 	public void showMessage(String message){
 		console.out(message);
 	}
-	Console console;
+	
 	public void init(){
 		Hero aletheia = new Hero("aletheia", engine);
 		Hero vladimir = new Hero("vladimir", engine);
@@ -42,6 +38,7 @@ public class Main extends Map{
 				e.printStackTrace();
 			}
 	}
+	
 	@Override
 	protected void update() {
 		if(Hero.nextHero){
@@ -51,13 +48,28 @@ public class Main extends Map{
 		}
 	}
 	
+	private void consoleSetup(){
+		console = ((Human)engine.controllers.get(0)).gui.console;			// Consider the existing console
+		
+		// Set the console to use the executer that is defined in this program
+		console.executer = new com.heartstone.main.Executer(this, console);	
+		
+		// List of program relevant commands that are to be added to the console
+		console.addCommand("endturn", 0);
+		console.addCommand("fight", 2);
+	}
+	
+
+	// The Main class constructor. As its purpose is only to set itself up as a map that the engine uses it is placed here alongside the main method.
 	private Main(Engine engine){
 		super(engine);
 	}
-	
-	private void consoleSetup(){
-		console = ((Human)engine.controllers.get(0)).gui.console;
-		console.executer = new com.heartstone.main.Executer(this, console);
-		console.addCommand("endturn", 0);
+	// The main method. Contains only the engine setup and no code relevant to this program itself.
+	public static void main(String[] args){
+		Engine engine = new Engine();
+		Main map = new Main(engine);
+		engine.typeHandler.newEntry("map", map);
+		engine.init();
+		engine.start();
 	}
 }

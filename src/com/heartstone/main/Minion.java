@@ -1,8 +1,13 @@
 package com.heartstone.main;
 
+import java.awt.Font;
+
+import org.newdawn.slick.TrueTypeFont;
+
 import com.spartanlaboratories.engine.game.VisibleObject;
 import com.spartanlaboratories.engine.structure.Camera;
 import com.spartanlaboratories.engine.structure.Engine;
+import com.spartanlaboratories.engine.structure.Location;
 import com.spartanlaboratories.engine.structure.Util;
 import com.spartanlaboratories.engine.structure.Util.NullColorException;
 
@@ -43,13 +48,9 @@ public class Minion implements Card{
 	VisibleObject face;
 	Minion(Preset preset){
 		this.preset = preset;
-	}
-	void attack(Minion victim){
-		damage(victim);
-		victim.damage(this);
-	}
-	private void damage(Minion victim){
-		victim.health -= damage;
+		mana = preset.mana;
+		health = preset.health;
+		damage = preset.damage;
 	}
 	@Override
 	public void playCard() {
@@ -86,21 +87,6 @@ public class Minion implements Card{
 			break;
 		}
 	}
-	public void setFace(Engine engine, String fileType, String path){
-		face = new VisibleObject(engine);
-		face.setTexture(fileType, path);
-		face.setWidth(120);
-		face.setHeight(200);
-		face.color = Util.Color.WHITE;
-	}
-	public void drawMe(Camera camera){
-		try {
-			face.drawMe(camera);
-		} 
-		catch (NullColorException e) {
-			e.printStackTrace();
-		}
-	}
 	@Override
 	public int getManaCost() {
 		return mana;
@@ -112,5 +98,50 @@ public class Minion implements Card{
 	public String name() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	void attack(Minion victim){
+		damage(victim);
+		victim.damage(this);
+	}
+	public void setFace(Engine engine, String fileType, String path){
+		face = new VisibleObject(engine);
+		face.setTexture(fileType, path);
+		face.setWidth(120);
+		face.setHeight(200);
+		face.color = Util.Color.WHITE;
+	}
+	public void drawMe(Camera camera){
+		// Draws the minion's portrait
+		try {
+			face.drawMe(camera);
+		} 
+		catch (NullColorException e) {
+			e.printStackTrace();
+		}
+		
+		/* Abandoned code for drawing the health of a minion. Probably will not come back to it. Spartak.
+		final int size = 32;
+		BufferedImage health = new BufferedImage(size,size, BufferedImage.TYPE_INT_RGB);
+		byte[] data = new byte[(int) (health.getType() * Math.pow(size, 2))];
+		Graphics2D g = health.createGraphics();
+		g.drawString(String.valueOf(this.health), 0, 0);
+		health.getAlphaRaster().getDataElements(0, 0, size, size, data);
+		ByteBuffer b = ByteBuffer.allocate(data.length);
+		b.get(data);
+		b.rewind();
+		GL11.g
+		*/
+		
+		// Draws the minion's health value
+		Font font;
+		font = new Font("Arial", Font.BOLD, 32);
+		TrueTypeFont f = new TrueTypeFont(font, false);
+		Location drawLocation = new Location(face.getLocation().getLocationOnScreen(camera));
+		drawLocation.x -= face.getWidth() / 2;
+		drawLocation.y += face.getHeight() / 2;
+		f.drawString((float)drawLocation.x, (float)drawLocation.y, String.valueOf(health), org.newdawn.slick.Color.red);
+	}
+	private void damage(Minion victim){
+		victim.health -= damage;
 	}
 }

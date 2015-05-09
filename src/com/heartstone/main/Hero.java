@@ -65,7 +65,7 @@ public class Hero extends VisibleObject{
 	}
 	public synchronized boolean drawMe(Camera camera) throws Util.NullColorException{
 		for(Card c: field)
-			((Minion)c).face.drawMe(camera);
+			((Minion)c).drawMe(camera);
 		return super.drawMe(camera);
 	}
 	private void createDeck() { 

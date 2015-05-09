@@ -17,6 +17,13 @@ public class Executer extends Console.Executer{
 			this.owner.out("The player: " + Hero.currentHero.name + " has ended their turn.");
 			Hero.nextHero = true;
 			break;
+		case "fight":
+			int attackerIndex = Integer.parseInt(readReadyCommand[1]) - 1;
+			Minion attacker = (Minion) Hero.currentHero.field.get(attackerIndex);
+			int victimIndex = Integer.parseInt(readReadyCommand[2]) - 1;
+			Minion victim = (Minion) Hero.heroes.get(Hero.heroes.indexOf(Hero.currentHero) - 1).field.get(victimIndex);
+			attacker.attack(victim);
+			break;
 		}
 	}
 }
