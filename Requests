@@ -1,5 +1,3 @@
 Create a VisibleObject constructor that does not require an engine as its parameter as well as a function that lets the user set the engine that is referenced by the vo.
 Make printing the stack trace on special exception optional
-Make the portrait not be there by default
-Create an End Turn button
 create a tan-colored battlefield
