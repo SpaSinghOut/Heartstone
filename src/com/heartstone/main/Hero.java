@@ -10,7 +10,7 @@ public class Hero extends VisibleObject{
 	String name;
 	public final static int maxMaxMana = 10;
 	public static ArrayList<Hero> heroes = new ArrayList<Hero>();
-	ArrayList<Card> deck = new ArrayList<Card>(), hand = new ArrayList<Card>(), field = new ArrayList<Card>();
+	volatile ArrayList<Card> deck = new ArrayList<Card>(), hand = new ArrayList<Card>(), field = new ArrayList<Card>(), graveyard = new ArrayList<Card>();
 	int fieldVerticalOffset;
 	static Hero currentHero;
 	static boolean nextHero;
@@ -57,7 +57,8 @@ public class Hero extends VisibleObject{
 		card.playCard();											// Tells the card that it has been played allowing it to prock special effects
 		hand.remove(card);											// Removes the card from the hand
 		if(card.getClass().equals(Minion.class)){					// If this is a minion type card
-			field.add(card);				// Then add it to the field and initialize its graphics
+			((Minion)card).owner = this;							// First set self as the card's owner
+			field.add(card);										// Then add it to the field and initialize its graphics
 			((Minion)card).setFace(engine, "JPG", "resources/" + ((Minion)card).preset.toString().toLowerCase() + ".jpg");
 		}
 		for(int i = 0; i < field.size(); i++)						// Reconfigure Minion positions

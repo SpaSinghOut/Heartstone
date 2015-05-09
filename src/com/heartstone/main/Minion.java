@@ -46,6 +46,7 @@ public class Minion implements Card{
 	int health;
 	Preset preset;
 	VisibleObject face;
+	Hero owner;
 	Minion(Preset preset){
 		this.preset = preset;
 		mana = preset.mana;
@@ -96,8 +97,7 @@ public class Minion implements Card{
 	}
 	@Override
 	public String name() {
-		// TODO Auto-generated method stub
-		return null;
+		return preset.name().toLowerCase();
 	}
 	void attack(Minion victim){
 		damage(victim);
@@ -114,8 +114,7 @@ public class Minion implements Card{
 		// Draws the minion's portrait
 		try {
 			face.drawMe(camera);
-		} 
-		catch (NullColorException e) {
+		} catch (NullColorException e) {
 			e.printStackTrace();
 		}
 		
@@ -133,15 +132,46 @@ public class Minion implements Card{
 		*/
 		
 		// Draws the minion's health value
+		drawHealth(camera);
+		drawDamage(camera);
+	}
+	
+	private void drawHealth(Camera camera){
+		// Creation of the Font with which the health will be drawn
 		Font font;
 		font = new Font("Arial", Font.BOLD, 32);
 		TrueTypeFont f = new TrueTypeFont(font, false);
+		
+		// Setting the location at which the health will be drawn
+		Location drawLocation = new Location(face.getLocation().getLocationOnScreen(camera));
+		drawLocation.x += face.getWidth() / 2;
+		drawLocation.y += face.getHeight() / 2;
+		
+		// Actually showing the health of this minion
+		f.drawString((float)drawLocation.x, (float)drawLocation.y, String.valueOf(health), org.newdawn.slick.Color.red);
+	}
+	private void drawDamage(Camera camera){
+		// Creation of the Font with which the health will be drawn
+		Font font;
+		font = new Font("Arial", Font.BOLD, 32);
+		TrueTypeFont f = new TrueTypeFont(font, false);
+		
+		// Setting the location at which the health will be drawn
 		Location drawLocation = new Location(face.getLocation().getLocationOnScreen(camera));
 		drawLocation.x -= face.getWidth() / 2;
 		drawLocation.y += face.getHeight() / 2;
-		f.drawString((float)drawLocation.x, (float)drawLocation.y, String.valueOf(health), org.newdawn.slick.Color.red);
+		
+		// Actually showing the health of this minion
+		f.drawString((float)drawLocation.x, (float)drawLocation.y, String.valueOf(damage), org.newdawn.slick.Color.yellow);
 	}
 	private void damage(Minion victim){
-		victim.health -= damage;
+		victim.changeHealth(-damage);
+	}
+	private synchronized void changeHealth(int netChange){
+		health += netChange;
+		if(health <= 0){
+			owner.field.remove(this);
+			owner.graveyard.add(this);
+		}
 	}
 }

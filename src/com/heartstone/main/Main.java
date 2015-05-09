@@ -1,15 +1,18 @@
 package com.heartstone.main;
 
+import com.spartanlaboratories.engine.game.VisibleObject;
 import com.spartanlaboratories.engine.structure.Camera;
 import com.spartanlaboratories.engine.structure.Human;
 import com.spartanlaboratories.engine.structure.Console;
 import com.spartanlaboratories.engine.structure.Engine;
 import com.spartanlaboratories.engine.structure.Map;
+import com.spartanlaboratories.engine.structure.Util;
 import com.spartanlaboratories.engine.structure.Util.NullColorException;
 
 public class Main extends Map{
 	
 	Console console; // The console through which the game action are curently being controlled.
+	VisibleObject background;
 	
 	public void showMessage(String message){
 		console.out(message);
@@ -18,25 +21,32 @@ public class Main extends Map{
 	public void init(){
 		Hero aletheia = new Hero("aletheia", engine);
 		Hero vladimir = new Hero("vladimir", engine);
-		aletheia.setLocation(500, 111);
-		aletheia.fieldVerticalOffset = 200;
-		vladimir.setLocation(500,800);
-		vladimir.fieldVerticalOffset = -200;
+		aletheia.setLocation(500, 75);
+		aletheia.fieldVerticalOffset = 250;
+		vladimir.setLocation(500,900);
+		vladimir.fieldVerticalOffset = -250;
 		aletheia.setTexture("JPG", "resources/mage.jpg");
 		vladimir.setTexture("JPG", "resources/warlock.jpg");
 		consoleSetup();
 		Hero.nextHero = true;
+		background = new VisibleObject(engine);
+		Camera camera = ((Human)engine.controllers.get(0)).getPrimaryCamera();
+		background.setLocation(camera.worldLocation);
+		background.setHeight(camera.dimensions.y);
+		background.setWidth(camera.dimensions.x);
+		background.color = Util.Color.GREEN;
 	}
 	
 	@Override
 	public void drawMap(Camera camera){
 		super.drawMap(camera);
-		for(Hero h:Hero.heroes)
-			try {
+		try {
+			background.drawMe(camera);
+			for(Hero h:Hero.heroes)
 				h.drawMe(camera);
-			} catch (NullColorException e) {
-				e.printStackTrace();
-			}
+		} catch (NullColorException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Override
