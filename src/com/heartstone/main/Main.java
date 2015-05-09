@@ -1,5 +1,7 @@
 package com.heartstone.main;
 
+import java.util.ArrayList;
+
 import com.spartanlaboratories.engine.game.VisibleObject;
 import com.spartanlaboratories.engine.structure.Camera;
 import com.spartanlaboratories.engine.structure.Human;
@@ -11,7 +13,7 @@ import com.spartanlaboratories.engine.structure.Util.NullColorException;
 
 public class Main extends Map{
 	
-	Console console; // The console through which the game action are curently being controlled.
+	Console console; // The console through which the game action is currently being controlled.
 	VisibleObject background;
 	
 	public void showMessage(String message){
@@ -48,13 +50,8 @@ public class Main extends Map{
 			e.printStackTrace();
 		}
 	}
-<<<<<<< HEAD
-
 		static ArrayList<Card> graveyard = new ArrayList<Card>();
-		
-=======
-	
->>>>>>> origin/master
+
 	@Override
 	protected void update() {
 		if(Hero.nextHero){
@@ -62,15 +59,7 @@ public class Main extends Map{
 			if(heroIndex >= Hero.heroes.size())heroIndex = 0;
 			Hero.heroes.get(heroIndex).turn();
 		}
-<<<<<<< HEAD
-
 	} 
-	
-	private Main(Engine engine){
-		super(engine);
-=======
->>>>>>> origin/master
-	}
 	
 	private void consoleSetup(){
 		console = ((Human)engine.controllers.get(0)).gui.console;			// Consider the existing console
