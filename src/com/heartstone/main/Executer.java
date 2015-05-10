@@ -7,7 +7,7 @@
  * 
  * 2. Typing in a command
  * 			The console is tuned to recognize a command as a word that follows the ! symbol also known as the command identifier. 
- * 			For example if the user is trying to put it a command that end their turn the command should look like this: "!endturn". 
+ * 			For example if the user is trying to put in a command that ends their turn, the command should look like this: "!endturn". 
  * 			Also the console will only read one word after the command identifier so "!end turn" or "! endturn" will not work.
  * 
  * 3. Entering command parameters
