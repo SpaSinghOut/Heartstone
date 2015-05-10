@@ -25,8 +25,8 @@ public class Hero extends VisibleObject{
 		* different resolution values. These values were decided on while working on a monitor with the resolution of 1920/1080. These are eventually
 		* to be changed to values that represent a proportion of the size of the screen that views them.
 		*/
-		setWidth(120);				// Sets the width of this hero's portrait to 120 pixels
-		setHeight(200);				// Sets the height of this hero's portrait to 120 pixels
+		setWidth(96);				// Sets the width of this hero's portrait to 96 pixels
+		setHeight(160);				// Sets the height of this hero's portrait to 160 pixels
 		
 		// Set the color of this hero's portrait to white.
 		color = Util.Color.WHITE;
@@ -41,7 +41,7 @@ public class Hero extends VisibleObject{
 		currentHero = this;		// Sets the static variable that represent the current hero to the current instance
 		nextHero = false;		// Prevents code from starting the next player's turn
 		resetMana();			// Increases the hero's maximum mana by 1 and changes their current mana to max
-		playCard(drawCard());	// The hero plays the card that they draw
+		drawCard();				// Draw 1 card
 		
 		// *** DEBUG CODE *** //
 		for(Card c:field){		// For every card on the field
@@ -52,7 +52,7 @@ public class Hero extends VisibleObject{
 		}
 		// *** DEBUG CODE *** //
 	}
-	void playCard(Card card){
+	synchronized void playCard(Card card){
 		mana -= card.getManaCost();									// Subtracts the mana cost from the user's mana
 		card.playCard();											// Tells the card that it has been played allowing it to prock special effects
 		hand.remove(card);											// Removes the card from the hand
@@ -67,6 +67,11 @@ public class Hero extends VisibleObject{
 	public synchronized boolean drawMe(Camera camera) throws Util.NullColorException{
 		for(Card c: field)
 			((Minion)c).drawMe(camera);
+		int increment = 0;
+		for(Card c: hand){
+			((Minion)c).face.setLocation(350 + 150 * increment++, getLocation().y - fieldVerticalOffset);
+			((Minion)c).drawMe(camera);
+		}
 		return super.drawMe(camera);
 	}
 	private void createDeck() { 
@@ -77,6 +82,7 @@ public class Hero extends VisibleObject{
 		Card card = deck.get((int)(Math.random()*deck.size()));						// Gets a random card from the deck
 		hand.add(card);																// Puts the card into the player's hand
 		deck.remove(card);															// Removes the card from the deck
+		if(card.getClass().equals(Minion.class))((Minion)card).setFace(engine, "jpg", "resources/" + ((Minion)card).name() + ".jpg");
 		System.out.println("The player " + name +" drew the card " + card.name());	// Debug code
 		return card;																// Returns the card that was drawn
 	}

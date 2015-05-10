@@ -106,8 +106,8 @@ public class Minion implements Card{
 	public void setFace(Engine engine, String fileType, String path){
 		face = new VisibleObject(engine);
 		face.setTexture(fileType, path);
-		face.setWidth(120);
-		face.setHeight(200);
+		face.setWidth(90);
+		face.setHeight(150);
 		face.color = Util.Color.WHITE;
 	}
 	public void drawMe(Camera camera){
@@ -136,16 +136,23 @@ public class Minion implements Card{
 		drawDamage(camera);
 	}
 	
+	private synchronized void changeHealth(int netChange){
+		health += netChange;
+		if(health <= 0){
+			owner.field.remove(this);
+			owner.graveyard.add(this);
+		}
+	}
 	private void drawHealth(Camera camera){
 		// Creation of the Font with which the health will be drawn
 		Font font;
-		font = new Font("Arial", Font.BOLD, 32);
+		font = new Font("Arial", Font.BOLD, 30);
 		TrueTypeFont f = new TrueTypeFont(font, false);
 		
 		// Setting the location at which the health will be drawn
 		Location drawLocation = new Location(face.getLocation().getLocationOnScreen(camera));
-		drawLocation.x += face.getWidth() / 2;
-		drawLocation.y += face.getHeight() / 2;
+		drawLocation.x += face.getWidth() / 2.8;
+		drawLocation.y += face.getHeight() / 2.95;
 		
 		// Actually showing the health of this minion
 		f.drawString((float)drawLocation.x, (float)drawLocation.y, String.valueOf(health), org.newdawn.slick.Color.red);
@@ -159,19 +166,12 @@ public class Minion implements Card{
 		// Setting the location at which the health will be drawn
 		Location drawLocation = new Location(face.getLocation().getLocationOnScreen(camera));
 		drawLocation.x -= face.getWidth() / 2;
-		drawLocation.y += face.getHeight() / 2;
+		drawLocation.y += face.getHeight() / 2.95;
 		
 		// Actually showing the health of this minion
 		f.drawString((float)drawLocation.x, (float)drawLocation.y, String.valueOf(damage), org.newdawn.slick.Color.yellow);
 	}
 	private void damage(Minion victim){
 		victim.changeHealth(-damage);
-	}
-	private synchronized void changeHealth(int netChange){
-		health += netChange;
-		if(health <= 0){
-			owner.field.remove(this);
-			owner.graveyard.add(this);
-		}
 	}
 }

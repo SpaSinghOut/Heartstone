@@ -23,10 +23,10 @@ public class Main extends Map{
 	public void init(){
 		Hero aletheia = new Hero("aletheia", engine);
 		Hero vladimir = new Hero("vladimir", engine);
-		aletheia.setLocation(500, 75);
-		aletheia.fieldVerticalOffset = 250;
-		vladimir.setLocation(500,900);
-		vladimir.fieldVerticalOffset = -250;
+		aletheia.setLocation(500, 170);
+		aletheia.fieldVerticalOffset = 165;
+		vladimir.setLocation(500,755);
+		vladimir.fieldVerticalOffset = -165;
 		aletheia.setTexture("JPG", "resources/mage.jpg");
 		vladimir.setTexture("JPG", "resources/warlock.jpg");
 		consoleSetup();
@@ -70,6 +70,7 @@ public class Main extends Map{
 		// List of program relevant commands that are to be added to the console
 		console.addCommand("endturn", 0);
 		console.addCommand("fight", 2);
+		console.addCommand("playcard", 1);
 	}
 	
 

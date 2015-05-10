@@ -46,7 +46,6 @@ public class Executer extends Console.Executer{
 			break;
 		case "fight":
 			// Works with the engine version 1.2.1
-			// But only if you dont kill anything
 			
 			int attackerIndex = Integer.parseInt(readReadyCommand[1]) - 1;
 			Minion attacker = (Minion) Hero.currentHero.field.get(attackerIndex);
@@ -54,6 +53,14 @@ public class Executer extends Console.Executer{
 			Minion victim = (Minion) Hero.heroes.get(Hero.heroes.indexOf(Hero.currentHero) - 1).field.get(victimIndex);
 			attacker.attack(victim);
 			break;
+		case "playcard":
+			// Will ATTEMPT to play a card from a player's hand to the field.
+			// Will not do so if the player does not have the required mana.
+			
+			if(Hero.currentHero.mana > Hero.currentHero.hand.get(Integer.parseInt(readReadyCommand[1])-1).getManaCost())
+				Hero.currentHero.playCard(Hero.currentHero.hand.get(Integer.parseInt(readReadyCommand[1])-1));
+			break;
+			
 		default: return false;
 		}
 		return true;
