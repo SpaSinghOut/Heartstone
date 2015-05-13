@@ -8,6 +8,7 @@ import com.spartanlaboratories.engine.structure.Human;
 import com.spartanlaboratories.engine.structure.Console;
 import com.spartanlaboratories.engine.structure.Engine;
 import com.spartanlaboratories.engine.structure.Map;
+import com.spartanlaboratories.engine.structure.Tracker.TrackerPreset;
 import com.spartanlaboratories.engine.structure.Util;
 import com.spartanlaboratories.engine.structure.Util.NullColorException;
 
@@ -37,6 +38,7 @@ public class Main extends Map{
 		background.setHeight(camera.dimensions.y);
 		background.setWidth(camera.dimensions.x);
 		background.color = Util.Color.GREEN;
+		engine.tracker.initialize(TrackerPreset.PRESET_RUN);
 	}
 	
 	@Override
