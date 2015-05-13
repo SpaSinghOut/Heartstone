@@ -132,8 +132,9 @@ public class Minion implements Card{
 		*/
 		
 		// Draws the minion's health value
-		drawHealth(camera);
-		drawDamage(camera);
+		drawStat("health", camera);
+		drawStat("damage", camera);
+		drawStat("mana", camera);
 	}
 	
 	private synchronized void changeHealth(int netChange){
@@ -143,21 +144,26 @@ public class Minion implements Card{
 			owner.graveyard.add(this);
 		}
 	}
-	private void drawHealth(Camera camera){
-		// Creation of the Font with which the health will be drawn
-		Font font;
-		font = new Font("Arial", Font.BOLD, 30);
-		TrueTypeFont f = new TrueTypeFont(font, false);
-		
-		// Setting the location at which the health will be drawn
-		Location drawLocation = new Location(face.getLocation().getLocationOnScreen(camera));
-		drawLocation.x += face.getWidth() / 2.8;
-		drawLocation.y += face.getHeight() / 2.95;
-		
-		// Actually showing the health of this minion
-		f.drawString((float)drawLocation.x, (float)drawLocation.y, String.valueOf(health), org.newdawn.slick.Color.red);
-	}
-	private void drawDamage(Camera camera){
+	private void drawStat(String stat, Camera camera){
+		double xMod = 0, yMod = 0, value = 0;
+		switch(stat){
+		case "damage":
+			xMod = -.5;
+			yMod = 0.34;
+			value = damage;
+			break;
+		case "health:":
+			xMod = 1 / 2.8;
+			yMod = 1 / 2.95;
+			value = health;
+			break;
+		case "mana:":
+			xMod = 1 / 2.8;
+			yMod =-1 / 2.95;
+			value = mana;
+			break;
+		default: throw new IllegalArgumentException();
+		}
 		// Creation of the Font with which the health will be drawn
 		Font font;
 		font = new Font("Arial", Font.BOLD, 32);
@@ -165,11 +171,11 @@ public class Minion implements Card{
 		
 		// Setting the location at which the health will be drawn
 		Location drawLocation = new Location(face.getLocation().getLocationOnScreen(camera));
-		drawLocation.x -= face.getWidth() / 2;
-		drawLocation.y += face.getHeight() / 2.95;
+		drawLocation.x += (int)(face.getWidth() * xMod);
+		drawLocation.y += (int)(face.getHeight() * yMod);
 		
 		// Actually showing the health of this minion
-		f.drawString((float)drawLocation.x, (float)drawLocation.y, String.valueOf(damage), org.newdawn.slick.Color.yellow);
+		f.drawString((float)drawLocation.x, (float)drawLocation.y, String.valueOf(value), org.newdawn.slick.Color.yellow);
 	}
 	private void damage(Minion victim){
 		victim.changeHealth(-damage);
