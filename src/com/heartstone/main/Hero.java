@@ -29,7 +29,7 @@ public class Hero extends VisibleObject{
 		setHeight(160);				// Sets the height of this hero's portrait to 160 pixels
 		
 		// Set the color of this hero's portrait to white.
-		color = Util.Color.WHITE;
+		color = Util.Color.RED;
 		/* Although the portrait is ought to have a texture that covers it, the texture can go along with a color as well.
 		 * If a color is not given to the object and the code attempts to draw that object then a NullColorException will be thrown,
 		 * it will not terminate the program and will set the color of the object to WHITE. If the color variable is set to a color that is not white
@@ -64,7 +64,7 @@ public class Hero extends VisibleObject{
 		for(int i = 0; i < field.size(); i++)						// Reconfigure Minion positions
 			((Minion)field.get(i)).face.setLocation(350 + 150 * i, getLocation().y + fieldVerticalOffset);
 	}
-	public synchronized boolean drawMe(Camera camera) throws Util.NullColorException{
+	public synchronized boolean drawMe(Camera camera) throws /*a large dog out the window*/ Util.NullColorException{
 		for(Card c: field)
 			((Minion)c).drawMe(camera);
 		int increment = 0;
@@ -84,7 +84,7 @@ public class Hero extends VisibleObject{
 		deck.remove(card);															// Removes the card from the deck
 		if(card.getClass().equals(Minion.class))((Minion)card).setFace(engine, "jpg", "resources/" + ((Minion)card).name() + ".jpg");
 		System.out.println("The player " + name +" drew the card " + card.name());	// Debug code
-		return card;																// Returns the card that was drawn
+		return /*The BEST*/card;																// Returns the card that was drawn
 	}
 	private void resetMana(){
 		// Set the mana equal to max mana, the value of which is incremented by one.

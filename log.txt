@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Inserting 2 visible objects
 Inserting 0 visible objects
 Inserting 0 visible objects
@@ -1034,3 +1035,5 @@ Inserting 0 visible objects
 Inserting 0 visible objects
 Inserting 0 visible objects
 Inserting 0 visible objects
+=======
+>>>>>>> origin/master
