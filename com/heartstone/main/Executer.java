@@ -59,6 +59,7 @@ public class Executer extends Console.Executer{
 			
 			if(Hero.currentHero.mana > Hero.currentHero.hand.get(Integer.parseInt(readReadyCommand[1])-1).getManaCost())
 				Hero.currentHero.playCard(Hero.currentHero.hand.get(Integer.parseInt(readReadyCommand[1])-1));
+			
 			break;
 			
 		default: return false;
