@@ -2,6 +2,11 @@
 <classpath>
 	<classpathentry kind="src" path=""/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/SLE"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/SLE 1.2.2"/>
+	<classpathentry kind="lib" path="SLSM Initial Release.jar" sourcepath="SLSM Initial Release.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/D:/Java/workspace/Heartstone/SLSM%20Initial%20Release.jar!/doc"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

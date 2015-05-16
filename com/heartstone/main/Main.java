@@ -2,6 +2,7 @@ package com.heartstone.main;
 
 import java.util.ArrayList;
 
+import com.spartanlaboratories.engine.game.Alive;
 import com.spartanlaboratories.engine.game.VisibleObject;
 import com.spartanlaboratories.engine.structure.Camera;
 import com.spartanlaboratories.engine.structure.Human;
@@ -11,6 +12,7 @@ import com.spartanlaboratories.engine.structure.Map;
 import com.spartanlaboratories.engine.structure.Tracker.TrackerPreset;
 import com.spartanlaboratories.engine.structure.Util;
 import com.spartanlaboratories.engine.structure.Util.NullColorException;
+import com.spartanlaboratories.engine.ui.Gui;
 
 public class Main extends Map{
 	
@@ -22,6 +24,8 @@ public class Main extends Map{
 	}
 	
 	public void init(){
+		//new StartMenu();
+		new Human(engine, Alive.Faction.RADIANT);
 		Hero aletheia = new Hero("aletheia", engine);
 		Hero vladimir = new Hero("vladimir", engine);
 		aletheia.setLocation(500, 170);

@@ -4,6 +4,8 @@ ehthumbs.db
 
 # Folder config file
 Desktop.ini
+log.txt
+Requests.txt
 
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
@@ -37,6 +39,8 @@ $RECYCLE.BIN/
 
 # Directories potentially created on remote AFP share
 .AppleDB
+.txt
+.class
 .AppleDesktop
 Network Trash Folder
 Temporary Items

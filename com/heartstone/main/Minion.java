@@ -1,5 +1,6 @@
 package com.heartstone.main;
 
+import org.newdawn.slick.Color;
 import java.awt.Font;
 
 import org.newdawn.slick.TrueTypeFont;
@@ -146,28 +147,34 @@ public class Minion implements Card{
 	}
 	private void drawStat(String stat, Camera camera){
 		double xMod = 0, yMod = 0, value = 0;
+		Color color = Color.yellow;;
+		
+		// Creation of the Font with which the health will be drawn
+		Font font;
+		font = new Font("Arial", Font.BOLD, 32);
+		TrueTypeFont f = new TrueTypeFont(font, false);
+		
 		switch(stat){
 		case "damage":
 			xMod = -.5;
 			yMod = 0.34;
 			value = damage;
+			color = Color.yellow;
 			break;
-		case "health:":
+		case "health":
 			xMod = 1 / 2.8;
 			yMod = 1 / 2.95;
 			value = health;
+			color = Color.red;
 			break;
-		case "mana:":
+		case "mana":
 			xMod = 1 / 2.8;
 			yMod =-1 / 2.95;
 			value = mana;
+			color = Color.blue;
 			break;
 		default: throw new IllegalArgumentException();
 		}
-		// Creation of the Font with which the health will be drawn
-		Font font;
-		font = new Font("Arial", Font.BOLD, 32);
-		TrueTypeFont f = new TrueTypeFont(font, false);
 		
 		// Setting the location at which the health will be drawn
 		Location drawLocation = new Location(face.getLocation().getLocationOnScreen(camera));
@@ -175,7 +182,7 @@ public class Minion implements Card{
 		drawLocation.y += (int)(face.getHeight() * yMod);
 		
 		// Actually showing the health of this minion
-		f.drawString((float)drawLocation.x, (float)drawLocation.y, String.valueOf(value), org.newdawn.slick.Color.yellow);
+		f.drawString((float)drawLocation.x, (float)drawLocation.y, String.valueOf((int)value), color);
 	}
 	private void damage(Minion victim){
 		victim.changeHealth(-damage);
